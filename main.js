@@ -12,20 +12,23 @@ function validateForm(){
 
 	var errorMessages = "";
 	var errorDiv = document.getElementById("errors");
-	
+	var elementFirstNameValue = document.getElementById("firstName").value;
+	var elementLastNameValue = document.getElementById("lastName").value;
+	var elementZipCodeValue = document.getElementById("zipcode").value;
+		
 	//Check to see if first and last name fields are empty. 
-	if( form.isEmptyFields() ){
+	if( form.isEmptyFields(elementFirstNameValue, elementLastNameValue, elementZipCodeValue) ){
 		errorMessages += "Error: One or more fields are emptied. <br />";
 	} else {
 	
 	//Check to see if then the length is within range.
-		if( !(form.validateLength()) ){
+		if( !(form.validateLength(elementFirstNameValue, elementLastNameValue)) ){
 			errorMessages += "Error: First and/or Last name are not between 3 to 50 characters <br />";
 		}
 	}
 	
 	//Check to see if zipcode is a number
-	if( !( form.isZipCodeNumber() ) ){
+	if( !( form.isZipCodeNumber(elementZipCodeValue) ) ){
 		errorMessages += "Error: Zipcode is not a number.";
 	}
 	

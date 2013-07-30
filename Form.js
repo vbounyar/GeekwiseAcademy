@@ -1,5 +1,5 @@
 
-/* The Form Object
+/* The Form Class
 	Make methods to:
 		1. Guard against empty fields.
 		
@@ -9,15 +9,16 @@
 */	
 var form = {
 
-	//This method checks the length of the firstNameLabel and lastNameLabel.
+	//This method checks the length of the firstName and lastName elements.
+	//Pass in the element's value.
 	//Length is between 3 and 50 characters and returns true. Else returns false.
-	validateLength : function(){
+	validateLength : function(firstNameValue, lastNameValue){
 
 		var lengthOfFirstName;
 		var lengthOfLastName;
 		
-		lengthOfFirstName = document.getElementById("firstName").value.length;
-		lengthOfLastName = document.getElementById("lastName").value.length;
+		lengthOfFirstName = firstNameValue.length;
+		lengthOfLastName = lastNameValue.length;
 		
 		//check first name
 		if(  !( (lengthOfFirstName > 3) && (lengthOfFirstName <50) ) ){
@@ -32,24 +33,26 @@ var form = {
 		return true;
 	},
 	
-	//This method checks empty fields in firstNameLabel, lastNameLabel, and zipcodeLabel.
+	//This method checks empty fields. Element values are passed in.
 	//Any fields empty, return false.
-	isEmptyFields : function(){
-		var firstName = document.getElementById("firstName").value;
-		var lastName = document.getElementById("lastName").value;
-		var zipcode = document.getElementById("zipcode").value;
+	isEmptyFields : function(pFirstNameValue, pLastNameValue, pZipCodeValue){
+	
+		var firstNameValue = pFirstNameValue;
+		var lastNameValue = pLastNameValue;
+		var zipcodeValue = pZipCodeValue;
 		
-		if(firstName == ""){
+		if(firstNameValue == ""){
 			return true;
 		} 
 		
-		if(lastName == ""){
+		if(lastNameValue == ""){
 			return true;
 		} 
 
-		if(zipcode == ""){
+		if(zipcodeValue == ""){
+			
 			return true;
-		} 
+		}  
 		
 		//The fields are not empty. Return false.
 		return false;
@@ -57,8 +60,8 @@ var form = {
 	},
 	
 	//This method returns true if zip code are numbers, else return false.
-	isZipCodeNumber : function(){
-		var zipcode = document.getElementById("zipcode").value;
+	isZipCodeNumber : function(pZipCode){
+		var zipcode = pZipCode;
 		
 		if( !( isNaN( zipcode ) ) ){
 			return true;
