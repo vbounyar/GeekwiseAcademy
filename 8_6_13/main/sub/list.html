@@ -1,0 +1,13 @@
+
+<h1> List Projects </h1>
+
+<ul ng-controller="ListCtrl">
+	<li ng-repeat = "project in projects">
+		<b>Title:</b> {{project.title}} <br>
+		<b>Description:</b> {{project.description}} <br>
+		<b>Due Date:</b> {{project.duedate}} <br>
+		<b>Team:</b> {{project.team}} <br>
+		<a href="#/edit"> Edit </a> | <a href="#/delete"> Delete </a> | <a href="#/add"> Add </a> | <a href="#/detail"> Detail </a> 
+	</li>
+</ul>
+		
